@@ -256,7 +256,7 @@ pre {
 
 @media (min-width: 900px) {
   .hero__meta {
-    grid-template-columns: 1fr 1fr 1fr 2fr;
+    grid-template-columns: 1fr 1fr 2fr;
   }
   .hero__meta div:last-child {
     grid-column: auto;

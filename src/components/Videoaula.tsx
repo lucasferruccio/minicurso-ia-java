@@ -1,11 +1,9 @@
 import Secao from './Secao'
-import { capitulos, curso, DURACAO_VIDEO, formatarTempo, VIDEO_ID } from '../data/curso'
-import { transcricao } from '../data/transcricao'
+import { capitulos, curso, VIDEO_ID } from '../data/curso'
 import type { PedidoVideo } from '../App'
 
 interface Props {
   pedido: PedidoVideo | null
-  irParaMomento: (segundos: number) => void
 }
 
 function urlDoVideo(pedido: PedidoVideo | null): string {
@@ -22,13 +20,13 @@ function urlDoVideo(pedido: PedidoVideo | null): string {
   return `https://www.youtube-nocookie.com/embed/${VIDEO_ID}?${params.toString()}`
 }
 
-export default function Videoaula({ pedido, irParaMomento }: Props) {
+export default function Videoaula({ pedido }: Props) {
   return (
     <Secao
       id="videoaula"
       numero={3}
       titulo="Videoaula"
-      lead={`${DURACAO_VIDEO} de explicação e demonstração no IntelliJ IDEA com o Claude Code. Pause nas pausas ativas e tente responder antes de continuar.`}
+      lead="Como um assistente de código funciona, como escrever bons prompts e como usar o Claude Code para aprender, com uma demonstração no IntelliJ IDEA."
     >
       <div className="video">
         {VIDEO_ID ? (
@@ -50,39 +48,24 @@ export default function Videoaula({ pedido, irParaMomento }: Props) {
         )}
       </div>
 
-      <div className="grade-video">
-        <nav className="cartao" aria-labelledby="capitulos-titulo">
-          <h3 id="capitulos-titulo">Capítulos</h3>
-          <ol className="capitulos">
-            {capitulos.map((c) => (
-              <li key={c.segundos}>
-                <button type="button" className="capitulos__botao" onClick={() => irParaMomento(c.segundos)}>
-                  <span className="capitulos__tempo">{formatarTempo(c.segundos)}</span>
-                  <span>
-                    {c.titulo}
-                    {c.objetivo && <span className="capitulos__obj"> · {c.objetivo}</span>}
-                  </span>
-                </button>
-              </li>
-            ))}
-          </ol>
-        </nav>
+      <p className="texto-apoio">
+        Não abriu?{' '}
+        <a href={`https://youtu.be/${VIDEO_ID}`} target="_blank" rel="noreferrer">
+          Assista direto no YouTube<span className="sr-only"> (abre em nova aba)</span>
+        </a>
+        .
+      </p>
 
-        <div className="cartao">
-          <h3>Transcrição</h3>
-          {transcricao.length > 0 ? (
-            <details className="transcricao">
-              <summary>Mostrar a transcrição completa</summary>
-              <div className="transcricao__texto">
-                {transcricao.map((p, i) => (
-                  <p key={i}>{p}</p>
-                ))}
-              </div>
-            </details>
-          ) : (
-            <p className="texto-apoio">A transcrição revisada será publicada junto com o vídeo.</p>
-          )}
-        </div>
+      <div className="cartao">
+        <h3 id="capitulos-titulo">O que você vai ver</h3>
+        <ol className="lista">
+          {capitulos.map((c) => (
+            <li key={c.titulo}>
+              {c.titulo}
+              {c.objetivo && <span className="capitulos__obj"> · {c.objetivo}</span>}
+            </li>
+          ))}
+        </ol>
       </div>
     </Secao>
   )

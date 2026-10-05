@@ -18,8 +18,8 @@ export interface PedidoVideo {
 export default function App() {
   const [pedido, setPedido] = useState<PedidoVideo | null>(null)
 
-  const irParaMomento = useCallback((segundos: number) => {
-    setPedido({ segundos, chave: Date.now() })
+  const irParaMomento = useCallback((segundos?: number) => {
+    if (segundos !== undefined) setPedido({ segundos, chave: Date.now() })
     const alvo = document.getElementById('videoaula-titulo')
     if (alvo) {
       const reduzir = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -38,7 +38,7 @@ export default function App() {
         <Hero />
         <ComoEstudar />
         <Sobre />
-        <Videoaula pedido={pedido} irParaMomento={irParaMomento} />
+        <Videoaula pedido={pedido} />
         <Quiz irParaMomento={irParaMomento} />
         <Materiais />
         <Referencias />

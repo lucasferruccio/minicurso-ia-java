@@ -16,7 +16,7 @@ export const curso = {
  * Ex.: https://www.youtube.com/watch?v=dQw4w9WgXcQ  →  'dQw4w9WgXcQ'
  * Enquanto estiver vazio, o site mostra um aviso no lugar do vídeo.
  */
-export const VIDEO_ID = ''
+export const VIDEO_ID = 'Lz87pGk1OE4'
 
 /** Duração real do vídeo, para exibir no site (ex.: '25 min'). */
 export const DURACAO_VIDEO = '25 min'
@@ -28,7 +28,7 @@ export interface Capitulo {
   objetivo?: string
 }
 
-// Tempos do roteiro. Depois da edição, troque pelos tempos reais do vídeo.
+// Partes do vídeo, na ordem em que aparecem.
 export const capitulos: Capitulo[] = [
   { segundos: 0, titulo: 'Abertura: o erro da IA' },
   { segundos: 150, titulo: 'Sobre o minicurso e objetivos' },
@@ -67,7 +67,7 @@ export const etapasEstudo = [
   { titulo: 'Leia os objetivos', texto: 'Saiba o que você vai conseguir fazer ao final.' },
   { titulo: 'Assista à videoaula', texto: 'Pause nas pausas ativas e tente responder antes de continuar.' },
   { titulo: 'Pratique', texto: 'Refaça as modificações no IntelliJ e tente o desafio final.' },
-  { titulo: 'Faça a avaliação', texto: 'Cada resposta traz uma explicação e o minuto do vídeo para rever.' },
+  { titulo: 'Faça a avaliação', texto: 'Cada resposta traz uma explicação e indica a parte do vídeo para rever.' },
   { titulo: 'Consulte os materiais', texto: 'Código de apoio, prompts usados e referências.' },
 ]
 

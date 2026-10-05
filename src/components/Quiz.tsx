@@ -2,10 +2,10 @@ import { useEffect, useRef, useState, type RefObject } from 'react'
 import Secao from './Secao'
 import CodeBlock from './CodeBlock'
 import { questoes, type Questao, type QuestaoEscolha } from '../data/questoes'
-import { formatarTempo, objetivos } from '../data/curso'
+import { objetivos } from '../data/curso'
 
 interface Props {
-  irParaMomento: (segundos: number) => void
+  irParaMomento: (segundos?: number) => void
 }
 
 /** Embaralha de forma fixa, garantindo que não comece na ordem certa. */
@@ -100,7 +100,7 @@ export default function Quiz({ irParaMomento }: Props) {
       id="avaliacao"
       numero={4}
       titulo="Avaliação interativa"
-      lead={`${total} questões ligadas aos objetivos. Cada resposta mostra na hora por que está certa ou errada e o minuto do vídeo para rever.`}
+      lead={`${total} questões ligadas aos objetivos. Cada resposta mostra na hora por que está certa ou errada e indica a parte do vídeo para rever.`}
       fundo="papel"
     >
       <div className="quiz">
@@ -231,7 +231,7 @@ interface FeedbackProps {
   questao: Questao
   selecao: number | null
   correto: boolean
-  irParaMomento: (s: number) => void
+  irParaMomento: (s?: number) => void
   refDiv: RefObject<HTMLDivElement | null>
 }
 
@@ -266,8 +266,8 @@ function Feedback({ questao, selecao, correto, irParaMomento, refDiv }: Feedback
           <strong>Resposta correta:</strong> {correta}
         </p>
       )}
-      <button type="button" className="link-botao" onClick={() => irParaMomento(questao.momento)}>
-        ▶ Reveja no vídeo em {formatarTempo(questao.momento)} ({questao.trecho})
+      <button type="button" className="link-botao" onClick={() => irParaMomento()}>
+        ▶ Reveja no vídeo a parte: {questao.trecho}
       </button>
     </div>
   )
@@ -276,7 +276,7 @@ function Feedback({ questao, selecao, correto, irParaMomento, refDiv }: Feedback
 interface ResultadoProps {
   resultados: Record<number, boolean>
   recomecar: () => void
-  irParaMomento: (s: number) => void
+  irParaMomento: (s?: number) => void
   tituloRef: RefObject<HTMLHeadingElement | null>
 }
 
@@ -334,8 +334,8 @@ function Resultado({ resultados, recomecar, irParaMomento, tituloRef }: Resultad
                 <span>
                   Questão {q.id} · {q.trecho}
                 </span>
-                <button type="button" className="link-botao" onClick={() => irParaMomento(q.momento)}>
-                  ▶ {formatarTempo(q.momento)}
+                <button type="button" className="link-botao" onClick={() => irParaMomento()}>
+                  ▶ Ir para o vídeo
                 </button>
               </li>
             ))}

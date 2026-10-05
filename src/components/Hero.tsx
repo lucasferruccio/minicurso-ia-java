@@ -1,4 +1,4 @@
-import { curso, DURACAO_VIDEO } from '../data/curso'
+import { curso } from '../data/curso'
 
 const passos = ['Objetivos', 'Videoaula', 'Avaliação', 'Materiais']
 
@@ -18,10 +18,6 @@ export default function Hero() {
           <div>
             <dt>Tempo de estudo</dt>
             <dd>{curso.tempoEstimado}</dd>
-          </div>
-          <div>
-            <dt>Videoaula</dt>
-            <dd>{DURACAO_VIDEO}</dd>
           </div>
           <div>
             <dt>Trilha</dt>

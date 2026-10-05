@@ -28,8 +28,7 @@ export default function ComoEstudar() {
           <h3>Dúvidas</h3>
           <p>{requisitos.duvidas}</p>
           <p>
-            Dica: o vídeo tem <strong>legendas revisadas</strong>. Ative pelo botão CC do player. A
-            transcrição completa fica logo abaixo do vídeo.
+            Dica: ative as legendas pelo botão <strong>CC</strong> do player do vídeo.
           </p>
         </div>
       </div>

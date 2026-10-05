@@ -14,8 +14,8 @@ Uma página única, na ordem de estudo:
 
 1. **Como estudar:** sequência sugerida, tempo estimado (cerca de 1h30), requisitos e onde tirar dúvidas.
 2. **Público e objetivos:** público-alvo, conhecimentos prévios e os 4 objetivos de aprendizagem.
-3. **Videoaula:** vídeo do YouTube incorporado, capítulos clicáveis e transcrição.
-4. **Avaliação interativa:** 10 questões com feedback imediato e explicativo, link para o minuto do vídeo e resultado por objetivo.
+3. **Videoaula:** vídeo do YouTube incorporado e a lista das partes do vídeo.
+4. **Avaliação interativa:** 10 questões com feedback imediato e explicativo, indicação da parte do vídeo para rever e resultado por objetivo.
 5. **Materiais de apoio:** as três regras, o modelo de prompt, os oito padrões, como pedir ajuda com um erro, recursos do Claude Code, os prompts do vídeo, o `CLAUDE.md` de tutor e o desafio.
 6. **Referências.**
 
@@ -70,30 +70,25 @@ git push
 
 Não é preciso `vercel.json`: o site usa só âncoras (`#videoaula`, `#avaliacao`…), sem rotas.
 
-## Depois de gravar o vídeo
+## Onde editar o conteúdo
 
 Todo o conteúdo fica em `src/data/`. Não é preciso mexer nos componentes.
 
 | O quê | Arquivo | Campo |
 | --- | --- | --- |
-| ID do vídeo do YouTube | `src/data/curso.ts` | `VIDEO_ID`: o trecho depois de `v=` no link |
-| Duração real do vídeo | `src/data/curso.ts` | `DURACAO_VIDEO` |
-| Tempos dos capítulos | `src/data/curso.ts` | `capitulos`, em segundos |
-| Minuto de cada questão | `src/data/questoes.ts` | `momento`, em segundos |
-| Transcrição | `src/data/transcricao.ts` | um parágrafo por item da lista |
+| ID do vídeo do YouTube | `src/data/curso.ts` | `VIDEO_ID` (atual: `Lz87pGk1OE4`) |
+| Partes do vídeo | `src/data/curso.ts` | `capitulos` |
+| Parte do vídeo de cada questão | `src/data/questoes.ts` | `trecho` |
 | Materiais e referências | `src/data/materiais.ts` | — |
-
-Para converter tempo em segundos: `minutos × 60 + segundos` (ex.: 12:30 → 750).
 
 No YouTube, deixe o vídeo **público ou não listado**, com **"Permitir incorporação"** ativado e as legendas revisadas enviadas como CC.
 
 ## Checklist antes da entrega (05/10/2026)
 
-- [ ] `VIDEO_ID`, duração, capítulos e tempos das questões preenchidos
-- [ ] Transcrição colada em `src/data/transcricao.ts`
+- [x] `VIDEO_ID` preenchido
 - [ ] Site aberto pelo link da Vercel no computador, no celular e em aba anônima
 - [ ] Vídeo toca no site, com legendas
-- [ ] Avaliação respondida do início ao fim, e os botões "Reveja no vídeo" funcionando
+- [ ] Avaliação respondida do início ao fim
 - [ ] Todos os links das referências abrem
 - [ ] Link da Vercel enviado na planilha da disciplina
 
@@ -118,4 +113,4 @@ minicurso-ia-java/
 - Contraste adequado: verificado com axe-core, sem violações WCAG 2 AA.
 - Feedback do quiz anunciado para leitores de tela; a questão de ordenar usa botões, sem arrastar.
 - Layout responsivo para celular e respeito à opção "reduzir movimento" do sistema.
-- Vídeo com legendas revisadas e transcrição em texto.
+- Vídeo com legendas (botão CC do YouTube).
