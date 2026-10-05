@@ -3,8 +3,8 @@
 export const curso = {
   titulo: 'Aprender a programar com assistentes de código',
   subtitulo:
-    'Use o Claude Code como tutor para entender problemas, construir soluções em Java por etapas e explicar o código.',
-  autor: 'Lucas Paiva Ferruccio',
+    'Como escrever prompts e usar o Claude Code como tutor: pedir bem, avançar por etapas e conferir o que a IA entrega.',
+  autor: 'Lucas Paiva',
   disciplina: 'Educação a Distância · Projeto da 1ª VA',
   trilha: 'Docência Digital na Era da IA: Ensino e Aprendizagem na EaD',
   ano: 2026,
@@ -31,11 +31,13 @@ export interface Capitulo {
 // Tempos do roteiro. Depois da edição, troque pelos tempos reais do vídeo.
 export const capitulos: Capitulo[] = [
   { segundos: 0, titulo: 'Abertura: o erro da IA' },
-  { segundos: 150, titulo: 'O assistente como tutor, não como resposta pronta', objetivo: 'O1' },
-  { segundos: 360, titulo: 'Entender o problema e pedir ajuda por etapas', objetivo: 'O1 e O2' },
-  { segundos: 690, titulo: 'Ler e explicar o código', objetivo: 'O3' },
-  { segundos: 930, titulo: 'Testar e modificar', objetivo: 'O4' },
-  { segundos: 1320, titulo: 'Desafio final e recapitulação' },
+  { segundos: 150, titulo: 'Sobre o minicurso e objetivos' },
+  { segundos: 270, titulo: 'Como um assistente de código funciona', objetivo: 'O1 e O4' },
+  { segundos: 480, titulo: 'Anatomia de um bom prompt', objetivo: 'O1' },
+  { segundos: 750, titulo: 'Oito padrões de prompt para aprender', objetivo: 'O2 e O3' },
+  { segundos: 1080, titulo: 'Configurando o Claude Code para estudar', objetivo: 'O1' },
+  { segundos: 1260, titulo: 'Demonstração: o mesmo problema, dois prompts', objetivo: 'Todos' },
+  { segundos: 1440, titulo: 'Armadilhas e as três regras' },
 ]
 
 export interface Objetivo {
@@ -44,10 +46,10 @@ export interface Objetivo {
 }
 
 export const objetivos: Objetivo[] = [
-  { id: 'O1', texto: 'Descrever um problema ao assistente de código, pedindo explicação em vez de resposta pronta.' },
-  { id: 'O2', texto: 'Construir a solução em Java por etapas, com a ajuda do assistente.' },
-  { id: 'O3', texto: 'Explicar com as próprias palavras o que o código faz.' },
-  { id: 'O4', texto: 'Modificar o código e verificar o resultado com casos de teste.' },
+  { id: 'O1', texto: 'Escrever prompts que pedem explicação, e não resposta pronta.' },
+  { id: 'O2', texto: 'Conduzir a conversa com o assistente por etapas.' },
+  { id: 'O3', texto: 'Usar o assistente para entender e explicar o código.' },
+  { id: 'O4', texto: 'Conferir o que a IA entrega, com testes e casos de limite.' },
 ]
 
 export const publicoAlvo = [

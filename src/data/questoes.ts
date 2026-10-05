@@ -1,4 +1,5 @@
 // Questões da avaliação interativa.
+// Foco: usar o assistente de código (Claude Code) para APRENDER, não Java em si.
 // Cada questão está ligada a um objetivo (O1–O4) e a um momento do vídeo (em segundos).
 // Depois da edição do vídeo, ajuste o campo `momento` para os tempos reais.
 
@@ -42,8 +43,8 @@ export const questoes: Questao[] = [
     id: 1,
     tipo: 'escolha',
     objetivo: 'O1',
-    momento: 285,
-    trecho: 'Configurando o assistente como tutor',
+    momento: 855,
+    trecho: 'Padrão 4: dica, não solução',
     enunciado:
       'Ana colou seu código com erro e pediu: "o que está errado?". O assistente respondeu com uma versão nova, toda reescrita, que funciona. Qual deve ser o próximo pedido de Ana para continuar APRENDENDO?',
     opcoes: [
@@ -57,7 +58,7 @@ export const questoes: Questao[] = [
           '"Não reescreva. Me diga em que parte está o problema e me dê uma dica para eu mesma corrigir."',
         correta: true,
         feedback:
-          'Isso. Ana volta a ser a autora do código: o assistente aponta e orienta, e ela corrige. É a regra "nunca aceitar código que você não sabe explicar" na prática.',
+          'Isso. Ana volta a ser a autora do código: o assistente aponta e orienta, e ela corrige. É o assistente agindo como tutor, não como resposta pronta.',
       },
       {
         texto: '"Reescreva de novo, agora com um comentário em cada linha."',
@@ -67,7 +68,7 @@ export const questoes: Questao[] = [
       {
         texto: '"Obrigada! Vou usar essa versão, já que ela funciona."',
         feedback:
-          'Funcionar não é o mesmo que entender. Se a regra mudar ou surgir outro erro, Ana não vai saber o que fazer.',
+          'Funcionar não é o mesmo que entender. Se a regra mudar ou surgir outro erro, Ana vai depender do assistente de novo.',
       },
     ],
   },
@@ -75,15 +76,15 @@ export const questoes: Questao[] = [
     id: 2,
     tipo: 'escolha',
     objetivo: 'O1',
-    momento: 210,
-    trecho: 'Dois jeitos de pedir',
+    momento: 570,
+    trecho: 'O mesmo pedido, antes e depois',
     enunciado:
       'Todos os pedidos abaixo pedem explicação por etapas. Qual deles descreve o problema de forma COMPLETA, sem deixar o assistente adivinhar a regra?',
     opcoes: [
       {
         texto: '"Sou iniciante. Quero um programa de média em Java. Explique por etapas."',
         feedback:
-          'Faltam quase todas as informações: quantas notas, qual o intervalo e qual a regra de aprovação. O assistente vai inventar o que não foi dito.',
+          'Faltam quase todas as informações: quantas notas, qual o intervalo e qual a regra de aprovação. O assistente vai inventar o que não foi dito, e você nem vai perceber.',
       },
       {
         texto: '"Sou iniciante. Quero um programa que lê notas e diz se o aluno passou. Explique por etapas."',
@@ -94,14 +95,14 @@ export const questoes: Questao[] = [
         texto:
           '"Sou iniciante. Quero um programa que lê 3 notas e mostra Aprovado se a média for acima de 7. Explique por etapas."',
         feedback:
-          'Quase lá, mas "acima de 7" exclui o 7. Se a regra real é "7 ou mais", essa palavra gera exatamente o erro da abertura do vídeo: media > 7.',
+          'Quase lá, mas "acima de 7" exclui o 7. Se a regra real é "7 ou mais", o assistente vai seguir o que você escreveu e gerar exatamente o erro da abertura do vídeo.',
       },
       {
         texto:
-          '"Sou iniciante. Quero um programa que lê 3 notas de 0 a 10 (podem ter casas decimais), calcula a média e mostra Aprovado se a média for maior ou igual a 7, senão Reprovado. Explique por etapas."',
+          '"Sou iniciante. Quero um programa que lê 3 notas de 0 a 10, calcula a média e mostra Aprovado se a média for maior ou igual a 7, senão Reprovado. Antes do código, me pergunte o que não estiver claro."',
         correta: true,
         feedback:
-          'Correto. O pedido diz as entradas (3 notas de 0 a 10, com decimais), o processamento (média) e a regra exata da saída (maior ou igual a 7).',
+          'Correto. O pedido diz as entradas, o processamento e a regra exata, e ainda convida o assistente a perguntar antes de codar. O assistente faz o que você pede, não o que você quis dizer.',
       },
     ],
   },
@@ -109,33 +110,32 @@ export const questoes: Questao[] = [
     id: 3,
     tipo: 'escolha',
     objetivo: 'O1',
-    momento: 360,
-    trecho: 'Entender o problema',
+    momento: 1080,
+    trecho: 'CLAUDE.md',
     enunciado:
-      'Enunciado: "Ler a hora de entrada e a hora de saída de um carro no estacionamento e mostrar o valor a pagar: R$ 5 pela primeira hora e R$ 3 por hora adicional." Qual análise está correta?',
+      'Você vai criar o arquivo CLAUDE.md do projeto para estudar. Qual instrução deixa o Claude Code no papel certo de TUTOR para um iniciante?',
     opcoes: [
       {
+        texto: '"Explique cada linha com todos os detalhes técnicos, como para um especialista."',
+        feedback:
+          'Explicar é bom, mas no nível errado. Um iniciante se perde em detalhes de especialista. A instrução precisa dizer quem você é.',
+      },
+      {
+        texto: '"Nunca me mostre código. Explique tudo só em texto."',
+        feedback:
+          'Proibir código vai longe demais: ver exemplos faz parte de aprender. A ideia é dosar o código, uma etapa por vez, não esconder tudo.',
+      },
+      {
         texto:
-          'Entradas: hora de entrada e hora de saída. Processamento: calcular o tempo e depois o valor (5 + 3 × horas adicionais). Saída: valor a pagar.',
+          '"Sou iniciante em Java. Explique antes de escrever código, mostre uma etapa por vez e me peça para prever o resultado antes de rodar."',
         correta: true,
         feedback:
-          'Exato. O tempo não é digitado: é um valor intermediário, calculado a partir das entradas. Os preços são regras fixas do problema, não entradas.',
+          'Correto. A instrução diz o seu nível e pede três atitudes de tutor: explicar antes, avançar por etapas e fazer você prever o resultado.',
       },
       {
-        texto:
-          'Entradas: hora de entrada, hora de saída e tempo. Processamento: 5 + 3 × tempo. Saída: valor a pagar.',
+        texto: '"Seja direto e responda só com o código, para eu ganhar tempo."',
         feedback:
-          'Dois problemas: o tempo é calculado, não digitado, e a fórmula cobra R$ 3 por todas as horas, inclusive a primeira, que custa R$ 5.',
-      },
-      {
-        texto: 'Entradas: hora de entrada e hora de saída. Processamento: 3 × tempo. Saída: tempo e valor a pagar.',
-        feedback:
-          'A fórmula ignora a primeira hora de R$ 5, e o enunciado pede só o valor como saída. O tempo é um passo intermediário.',
-      },
-      {
-        texto: 'Entradas: preço por hora. Processamento: ler a entrada e a saída. Saída: valor a pagar.',
-        feedback:
-          'Os preços já estão no enunciado, então não são digitados. E ler um valor é entrada, não processamento.',
+          'Ganha tempo agora e perde depois: sem explicação, você não sabe corrigir o código quando ele estiver errado.',
       },
     ],
   },
@@ -143,28 +143,28 @@ export const questoes: Questao[] = [
     id: 4,
     tipo: 'ordem',
     objetivo: 'O2',
-    momento: 450,
-    trecho: 'Plano em etapas',
+    momento: 750,
+    trecho: 'Padrões 1 a 3: entrevista, plano e etapas',
     enunciado:
-      'O programa deve ler 3 notas válidas (de 0 a 10), calcular a média e mostrar Aprovado (≥ 7), Recuperação (de 5 até menos de 7) ou Reprovado. Coloque as etapas na ordem certa.',
+      'Você vai resolver um problema novo com o Claude Code. Coloque na ordem certa os passos da conversa com o assistente.',
     itens: [
-      'Ler uma nota',
-      'Repetir a leitura enquanto a nota estiver fora de 0 a 10',
-      'Calcular a média das três notas',
-      'Testar se a média é maior ou igual a 7',
-      'Se não for, testar se a média é maior ou igual a 5',
+      'Descrever o problema e pedir que o assistente faça perguntas antes de escrever código',
+      'Pedir um plano com as etapas da solução, ainda sem código',
+      'Pedir só a primeira etapa, com explicação das linhas novas',
+      'Prever o resultado e rodar o programa para conferir',
+      'Só então pedir a próxima etapa',
     ],
     feedbackCerto:
-      'Ordem correta. A validação vem logo depois da leitura, para nenhuma nota inválida entrar na média. E o teste do 7 vem antes do teste do 5: se fosse ao contrário, uma média 8 cairia em Recuperação.',
+      'Ordem correta. Primeiro entender o problema, depois planejar, e então construir uma etapa por vez, sempre prevendo e conferindo antes de avançar.',
     feedbackErrado:
-      'Ainda não. Duas pistas: a nota precisa ser validada antes de entrar na média, e o teste com o limite maior (7) precisa vir antes do teste com o limite menor (5).',
+      'Ainda não. Pense assim: entender o problema vem antes de planejar, planejar vem antes de qualquer código, e cada etapa precisa ser conferida antes de pedir a próxima.',
   },
   {
     id: 5,
     tipo: 'escolha',
     objetivo: 'O2',
-    momento: 510,
-    trecho: 'Construir etapa por etapa',
+    momento: 810,
+    trecho: 'Padrão 3: uma etapa por vez',
     enunciado:
       'Você pediu tudo de uma vez e o assistente gerou 40 linhas com leitura, validação, cálculo e um menu. Ao rodar, o programa dá erro. Qual é a melhor estratégia para APRENDER e resolver?',
     opcoes: [
@@ -180,7 +180,7 @@ export const questoes: Questao[] = [
       },
       {
         texto:
-          'Voltar a um pedaço pequeno que funciona (só a leitura), rodar, e acrescentar uma parte por vez, testando a cada passo.',
+          'Voltar a um pedaço pequeno que funciona (só a leitura), rodar, e pedir ao assistente uma parte por vez, testando a cada passo.',
         correta: true,
         feedback:
           'Isso. Cada parte nova é testada sozinha. Quando algo quebrar, o erro está na última coisa que entrou, e você entende cada pedaço que constrói.',
@@ -196,32 +196,32 @@ export const questoes: Questao[] = [
     id: 6,
     tipo: 'escolha',
     objetivo: 'O3',
-    momento: 750,
-    trecho: 'Explicar de volta',
-    enunciado: 'Antes de rodar, explique: o que este trecho mostra?',
-    codigo: `int a = 7;
-int b = 2;
-double r = a / b;
-System.out.println(r);`,
+    momento: 990,
+    trecho: 'Padrão 8: perguntar o desconhecido',
+    enunciado:
+      'Na resposta do assistente aparece um recurso que você ainda não aprendeu (por exemplo, ArrayList). O código funciona. O que fazer?',
     opcoes: [
       {
-        texto: '3.5, porque r é double.',
+        texto: 'Aceitar, já que funciona. Você aprende esse recurso mais tarde.',
         feedback:
-          'É a resposta mais comum, mas a divisão acontece antes da atribuição. a / b é uma divisão entre dois int, que descarta a parte decimal.',
+          'Essa é a armadilha da "ilusão de competência": o programa roda, mas tem uma parte que você não sabe explicar nem modificar.',
       },
       {
-        texto: '3.0, porque a / b é uma divisão inteira (dá 3) e só depois vira double.',
+        texto:
+          'Pedir que o assistente explique o que é esse recurso e por que foi usado, e se existe um jeito de resolver com o que você já sabe.',
         correta: true,
         feedback:
-          'Correto. Java calcula 7 / 2 com inteiros, o que dá 3, e só então guarda em r como 3.0. Para obter 3.5, ao menos um dos valores precisa ser double, como em (double) a / b.',
+          'Correto. Você transforma a novidade em aprendizado e ainda compara com o que já conhece. A regra é: nunca aceitar código que você não sabe explicar.',
       },
       {
-        texto: '3, porque a e b são int.',
-        feedback: 'A divisão dá 3, mas r é double, então o println mostra 3.0, com a casa decimal.',
+        texto: 'Pedir que o assistente remova o recurso, sem explicação.',
+        feedback:
+          'Evita a novidade, mas perde a chance de aprender. Melhor entender primeiro e depois decidir se vale usar.',
       },
       {
-        texto: 'Dá erro de compilação, porque não se pode guardar um int em um double.',
-        feedback: 'Pode sim: Java converte int para double automaticamente. O código compila e roda.',
+        texto: 'Copiar o código e pesquisar o recurso depois, se der erro.',
+        feedback:
+          'Deixar para depois costuma virar nunca. E quando der erro, você vai ter de entender o recurso com pressa.',
       },
     ],
   },
@@ -229,35 +229,32 @@ System.out.println(r);`,
     id: 7,
     tipo: 'escolha',
     objetivo: 'O3',
-    momento: 825,
-    trecho: 'De volta ao erro da abertura',
+    momento: 900,
+    trecho: 'Padrão 5: explicar de volta',
     enunciado:
-      'Este trecho deveria ler 3 notas e calcular a média. Ele compila e roda. Lendo linha por linha, qual é o problema?',
-    codigo: `double soma = 0;
-for (int i = 1; i < 3; i++) {
-    soma = soma + entrada.nextDouble();
-}
-double media = soma / 3;`,
+      'O assistente explicou o código e você acha que entendeu. Qual é a melhor forma de CONFERIR se entendeu mesmo?',
     opcoes: [
       {
-        texto: 'Não há problema: o laço lê as notas 1, 2 e 3.',
+        texto: 'Perguntar ao assistente: "Entendi certo?"',
         feedback:
-          'Siga o laço: i começa em 1 e para quando deixa de ser menor que 3. Ele roda com i = 1 e i = 2, ou seja, duas vezes.',
+          'A pergunta não mostra o que você entendeu, então o assistente tende a só concordar. Ele precisa ver a sua explicação para corrigir.',
       },
       {
-        texto: 'soma deveria ser int, porque o contador i é int.',
-        feedback: 'As notas têm casas decimais, então soma precisa ser double. O tipo de i não interfere.',
-      },
-      {
-        texto: 'A média deveria ser soma / i.',
+        texto: 'Pedir uma explicação ainda mais detalhada.',
         feedback:
-          'Depois do laço, i nem existe mais (ele só vale dentro do for). E o problema real está em quantas vezes o laço roda.',
+          'Mais explicação é mais leitura, não prova de entendimento. O teste é você conseguir explicar sozinho.',
       },
       {
-        texto: 'O laço roda só 2 vezes: lê duas notas e divide por 3. Deveria ser i <= 3.',
+        texto: 'Reler a explicação do assistente com calma.',
+        feedback:
+          'Reler dá a sensação de que entendeu, porque o texto fica familiar. Mas reconhecer não é o mesmo que saber explicar.',
+      },
+      {
+        texto:
+          'Explicar com suas palavras o que o código faz e pedir ao assistente que corrija sua explicação, sem reescrever o código.',
         correta: true,
         feedback:
-          'Isso. Com i < 3 e início em 1, só duas notas são lidas, e a média sai menor do que deveria. Como na abertura, o código roda, mas a lógica está errada. Só aparece quando alguém explica o laço volta por volta.',
+          'Isso. Explicar de volta revela as lacunas, e o assistente corrige exatamente o que você entendeu errado. Foi essa técnica que encontrou o erro da abertura.',
       },
     ],
   },
@@ -265,28 +262,31 @@ double media = soma / 3;`,
     id: 8,
     tipo: 'escolha',
     objetivo: 'O4',
-    momento: 930,
-    trecho: 'Casos de teste',
+    momento: 420,
+    trecho: 'Ele pode errar com toda a confiança',
     enunciado:
-      'Regra: Aprovado com média ≥ 7, Recuperação de 5 até menos de 7, Reprovado abaixo de 5. O código usa if (media >= 7) ... else if (media > 5) ... else .... Qual PAR de testes revela o erro?',
+      'Você pediu uma correção e o Claude Code respondeu: "Corrigi o problema e testei, está funcionando." O que você faz?',
     opcoes: [
       {
-        texto: 'Médias 6 e 8',
-        feedback: 'Com 6 e 8 o código acerta (Recuperação e Aprovado). Valores no meio das faixas não pegam erros de limite.',
-      },
-      {
-        texto: 'Médias 5 e 7',
+        texto:
+          'Ler o que mudou, prever o resultado e rodar você mesmo, incluindo os casos de limite da regra (como média exatamente 7).',
         correta: true,
         feedback:
-          'Correto. Testar os limites da regra revela o erro: com média 5 o código mostra Reprovado, mas a regra diz Recuperação, porque media > 5 exclui o 5.',
+          'Correto. O assistente pode ter testado só casos fáceis, e o erro da abertura passava em quase todos. Quem confere o resultado é você.',
       },
       {
-        texto: 'Médias 0 e 10',
-        feedback: 'Extremos são bons testes, mas aqui o código acerta os dois. O erro está no limite de 5.',
+        texto: 'Confiar e seguir em frente, já que o assistente testou.',
+        feedback:
+          'O código do começo do vídeo também "funcionava": compilava e rodava. O erro só aparecia com a média 7,0.',
       },
       {
-        texto: 'Médias 6.5 e 6.9',
-        feedback: 'As duas estão dentro da faixa de Recuperação, longe do limite com erro. O código acerta ambas.',
+        texto: 'Perguntar: "Tem certeza de que está certo?"',
+        feedback:
+          'O assistente tende a confirmar a própria resposta. Perguntar de novo não substitui ver o resultado com os seus testes.',
+      },
+      {
+        texto: 'Pedir que o assistente rode os mesmos testes mais uma vez.',
+        feedback: 'Repetir os mesmos testes repete o mesmo ponto cego. Faltam os casos de limite, escolhidos por você.',
       },
     ],
   },
@@ -294,37 +294,32 @@ double media = soma / 3;`,
     id: 9,
     tipo: 'escolha',
     objetivo: 'O4',
-    momento: 1020,
-    trecho: 'Modificação 1: recuperação',
+    momento: 960,
+    trecho: 'Padrão 7: casos de limite',
     enunciado:
-      'Um colega fez a modificação da recuperação, mas inverteu a ordem dos testes. Preveja: o que este trecho mostra?',
-    codigo: `double media = 8.0;
-if (media >= 5) {
-    System.out.println("Recuperação");
-} else if (media >= 7) {
-    System.out.println("Aprovado");
-} else {
-    System.out.println("Reprovado");
-}`,
+      'Você pediu casos de teste e o assistente sugeriu as médias 6, 8 e 9. A regra é: Aprovado com média ≥ 7. Qual deve ser seu próximo pedido?',
     opcoes: [
       {
-        texto: 'Aprovado',
+        texto: '"Ótimo, três testes bastam."',
         feedback:
-          'Seria o certo pela regra, mas o código testa media >= 5 primeiro. Como 8 ≥ 5, ele entra no primeiro bloco e nem chega ao teste do 7.',
+          'Nenhum desses testes está no limite da regra. Um código com media > 7 passaria nos três, e o erro ficaria escondido.',
       },
       {
-        texto: 'Recuperação e Aprovado',
-        feedback: 'Numa cadeia if / else if / else, só o primeiro bloco verdadeiro é executado.',
-      },
-      {
-        texto: 'Recuperação',
+        texto:
+          '"Inclua os casos de limite da regra, como média exatamente 7, e explique o que cada teste verifica."',
         correta: true,
         feedback:
-          'Isso, e esse é o erro. O primeiro teste verdadeiro vence: 8 ≥ 5 já mostra Recuperação. Por isso o teste com o limite maior (7) precisa vir primeiro. Com essa ordem, nenhum aluno seria aprovado.',
+          'Isso. Você direciona o assistente para os testes que pegam erros de verdade e ainda aprende por que cada um importa.',
       },
       {
-        texto: 'Reprovado',
-        feedback: 'O else só roda se todos os testes anteriores forem falsos, mas 8 ≥ 5 é verdadeiro.',
+        texto: '"Gere mais 20 testes com médias aleatórias."',
+        feedback:
+          'Quantidade não garante qualidade: médias aleatórias dificilmente caem exatamente em 7,0, onde o erro aparece.',
+      },
+      {
+        texto: '"Me garanta que o código está correto."',
+        feedback:
+          'O assistente não pode garantir isso por você. O caminho é escolher bons testes e conferir os resultados.',
       },
     ],
   },
@@ -332,60 +327,33 @@ if (media >= 5) {
     id: 10,
     tipo: 'escolha',
     objetivo: 'O4',
-    momento: 1170,
-    trecho: 'Modificação 2: validar as notas',
+    momento: 570,
+    trecho: 'O mesmo pedido, antes e depois',
     enunciado:
-      'O programa precisa continuar pedindo a nota se a pessoa digitar um valor fora de 0 a 10 OU um texto, como "abc". Qual versão resolve os DOIS casos?',
+      'Você quer acrescentar a regra de recuperação ao programa. Qual pedido ao assistente mais ajuda você a modificar o código ENTENDENDO a mudança?',
     opcoes: [
       {
-        texto: 'Um while que testa o intervalo:',
-        codigo: `double nota = entrada.nextDouble();
-while (nota < 0 || nota > 10) {
-    System.out.print("Digite de novo: ");
-    nota = entrada.nextDouble();
-}`,
+        texto: '"Adicione recuperação."',
         feedback:
-          'Resolve o intervalo, mas não o texto: com "abc", o nextDouble() lança InputMismatchException antes mesmo de chegar ao while.',
+          'Curto demais: o assistente vai escolher os limites da recuperação por conta própria, e talvez não sejam os da sua escola.',
       },
       {
-        texto: 'Um try/catch que troca o erro por zero:',
-        codigo: `double nota;
-try {
-    nota = entrada.nextDouble();
-} catch (Exception e) {
-    nota = 0;
-}`,
+        texto:
+          '"Mude a regra: ≥ 7 aprovado, de 5 até menos de 7 recuperação, abaixo de 5 reprovado. Faça a mudança e me mostre só o código final."',
         feedback:
-          'O programa não quebra, mas registra 0 sem avisar: o aluno que digitou errado fica com nota zero. E nada impede uma nota 15.',
+          'A regra está completa, mas "só o código final" pula o entendimento. Você recebe a mudança pronta sem saber o que mudou nem por quê.',
       },
       {
-        texto: 'Um laço que confere se é número antes de ler:',
-        codigo: `double nota;
-while (true) {
-    System.out.print("Nota: ");
-    if (entrada.hasNextDouble()) {
-        nota = entrada.nextDouble();
-        if (nota >= 0 && nota <= 10) break;
-        System.out.println("Fora de 0 a 10.");
-    } else {
-        System.out.println("Digite um número.");
-        entrada.next(); // descarta o texto
-    }
-}`,
+        texto:
+          '"Mude a regra: ≥ 7 aprovado, de 5 até menos de 7 recuperação, abaixo de 5 reprovado. Antes de mostrar o código, me diga quais linhas precisam mudar e por quê."',
         correta: true,
         feedback:
-          'Correto. hasNextDouble() confere se o que foi digitado é número antes de ler; entrada.next() descarta o texto inválido; e o teste do intervalo repete a pergunta até a nota ser válida. É a mesma ideia do método lerNota do vídeo.',
+          'Correto. A regra está clara e você entende a mudança antes de vê-la. Depois, é prever o resultado e testar os limites 5 e 7.',
       },
       {
-        texto: 'Um if que confere se é número:',
-        codigo: `double nota = 0;
-if (entrada.hasNextDouble()) {
-    nota = entrada.nextDouble();
-} else {
-    System.out.println("Digite um número.");
-}`,
+        texto: '"Reescreva o programa inteiro com recuperação."',
         feedback:
-          'Pergunta só uma vez e não descarta o texto: o "abc" continua na entrada e a próxima leitura falha de novo. Também não testa o intervalo de 0 a 10.',
+          'Reescrever tudo esconde o que realmente mudou e pode trocar partes que já funcionavam. Peça só a mudança necessária.',
       },
     ],
   },

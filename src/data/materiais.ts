@@ -2,8 +2,40 @@
 
 export const regras = [
   { titulo: 'Entender antes de codar', texto: 'Descubra as entradas, o processamento e a saída antes de pedir código.' },
-  { titulo: 'Avançar por etapas', texto: 'Uma parte por vez, rodando o programa a cada passo.' },
+  { titulo: 'Avançar por etapas', texto: 'Uma parte por vez, conferindo a cada passo.' },
   { titulo: 'Nunca aceitar código que você não sabe explicar', texto: 'Explique de volta, preveja o resultado e teste os limites.' },
+]
+
+export const modeloPrompt = `Sou [seu nível] em [linguagem] e quero aprender, não só a resposta.
+Problema: [entradas, regra exata e saída esperada].
+O que já tenho: [código ou mensagem de erro, se houver].
+Agora quero só: [uma tarefa pequena].
+Explique antes de mostrar código e me pergunte o que não estiver claro.`
+
+export const padroes = [
+  { nome: 'Entrevista', frase: 'Antes de escrever código, me faça perguntas sobre o problema.' },
+  { nome: 'Plano sem código', frase: 'Divida a solução em etapas. Só liste as etapas, sem código.' },
+  { nome: 'Uma etapa por vez', frase: 'Me mostre só a etapa 1 e explique cada linha nova.' },
+  { nome: 'Dica, não solução', frase: 'Não corrija. Me diga onde está o problema e me dê uma dica.' },
+  { nome: 'Explicar de volta', frase: 'Vou explicar o código com minhas palavras. Corrija o que eu errar, sem reescrever.' },
+  { nome: 'Prever antes de rodar', frase: 'Com estas entradas, eu acho que sai [resultado]. Estou certo? Por quê?' },
+  { nome: 'Casos de limite', frase: 'Quais testes eu devo fazer? Inclua os casos de limite e explique cada um.' },
+  { nome: 'Perguntar o desconhecido', frase: 'O que é esse [recurso]? Dá para fazer com o que eu já sei?' },
+]
+
+export const pedidoErro = [
+  'A mensagem de erro, copiada inteira',
+  'O que você fez (ex.: "digitei 7.5 na nota 1")',
+  'O que você esperava que acontecesse',
+  'O que você quer (ex.: "me explique o erro, sem corrigir")',
+]
+
+export const recursosClaudeCode = [
+  { nome: 'Shift+Tab (modo plano)', uso: 'Ele lê e planeja, mas não altera nenhum arquivo.' },
+  { nome: '/output-style learning', uso: 'Explica as escolhas e deixa partes do código para você escrever, marcadas com TODO(human).' },
+  { nome: '@arquivo', uso: 'Aponta o arquivo certo, em vez de descrever onde ele está.' },
+  { nome: 'Esc e Esc Esc', uso: 'Para no meio e volta a um ponto anterior da conversa.' },
+  { nome: '/clear', uso: 'Começa do zero quando a conversa ficou confusa.' },
 ]
 
 export const prompts = [
@@ -45,56 +77,12 @@ Sou iniciante em Java e estou aprendendo.
 - Me peça para prever o resultado antes de rodar.
 - Quando eu explicar o código, corrija minha explicação sem reescrever o código.`
 
-export const codigoFinal = `import java.util.Scanner;
-
-public class CalculadoraMedia {
-    public static void main(String[] args) {
-        Scanner entrada = new Scanner(System.in);
-
-        double nota1 = lerNota(entrada, "Nota 1: ");
-        double nota2 = lerNota(entrada, "Nota 2: ");
-        double nota3 = lerNota(entrada, "Nota 3: ");
-
-        double media = (nota1 + nota2 + nota3) / 3;
-        System.out.printf("Média: %.1f%n", media);
-
-        if (media >= 7) {
-            System.out.println("Aprovado");
-        } else if (media >= 5) {
-            System.out.println("Recuperação");
-        } else {
-            System.out.println("Reprovado");
-        }
-
-        entrada.close();
-    }
-
-    static double lerNota(Scanner entrada, String mensagem) {
-        while (true) {
-            System.out.print(mensagem);
-            if (entrada.hasNextDouble()) {
-                double nota = entrada.nextDouble();
-                if (nota >= 0 && nota <= 10) {
-                    return nota;
-                }
-                System.out.println("A nota deve estar entre 0 e 10.");
-            } else {
-                System.out.println("Digite um número.");
-                entrada.next(); // descarta o texto inválido
-            }
-        }
-    }
-}`
-
 export const desafio = {
   titulo: 'Desafio final: uma turma inteira',
   texto:
     'Adapte o programa para vários alunos. Ele deve ler o nome e as 3 notas de cada aluno e, no fim, mostrar a situação de cada um e quantos foram aprovados.',
   dica: 'Use o assistente como tutor: peça as etapas, escreva você mesmo, preveja a saída e teste os limites. Se for usar uma lista, peça para ele explicar o ArrayList antes.',
 }
-
-export const dicaScanner =
-  'No Windows em português, o Scanner espera vírgula nas notas (7,5). Digitar 7.5 gera um erro InputMismatchException.'
 
 export interface Referencia {
   texto: string
@@ -148,6 +136,14 @@ export const referencias: { grupo: string; itens: Referencia[] }[] = [
       {
         texto: 'ANTHROPIC. Claude Code: documentação oficial. Acesso em: 30 set. 2026.',
         url: 'https://code.claude.com/docs/en/overview',
+      },
+      {
+        texto: 'ANTHROPIC. Best practices for Claude Code. Acesso em: 5 out. 2026.',
+        url: 'https://code.claude.com/docs/en/best-practices',
+      },
+      {
+        texto: 'ANTHROPIC. Output styles (Claude Code). Acesso em: 5 out. 2026.',
+        url: 'https://code.claude.com/docs/en/output-styles',
       },
       {
         texto: 'JETBRAINS. IntelliJ IDEA. Acesso em: 30 set. 2026.',

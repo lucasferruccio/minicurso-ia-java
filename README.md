@@ -1,8 +1,8 @@
 # Aprender a programar com assistentes de código
 
-Site do minicurso EaD em que o participante aprende a usar o **Claude Code como tutor**: entender o problema, construir a solução em Java por etapas, explicar o código e verificar o resultado. O foco é o uso do assistente, e o Java serve de exemplo prático.
+Site do minicurso EaD em que o participante aprende a **escrever prompts e usar o Claude Code como tutor**: pedir bem, avançar por etapas, entender o código e conferir o que a IA entrega. O foco é o uso do assistente; o Java serve só de exemplo.
 
-- **Autor:** Lucas Paiva Ferruccio
+- **Autor:** Lucas Paiva
 - **Disciplina:** Educação a Distância · Projeto da 1ª VA
 - **Trilha:** Docência Digital na Era da IA: Ensino e Aprendizagem na EaD
 - **Modelo de design instrucional:** ADDIE
@@ -16,17 +16,17 @@ Uma página única, na ordem de estudo:
 2. **Público e objetivos:** público-alvo, conhecimentos prévios e os 4 objetivos de aprendizagem.
 3. **Videoaula:** vídeo do YouTube incorporado, capítulos clicáveis e transcrição.
 4. **Avaliação interativa:** 10 questões com feedback imediato e explicativo, link para o minuto do vídeo e resultado por objetivo.
-5. **Materiais de apoio:** as três regras, os prompts do vídeo, o arquivo `CLAUDE.md` de tutor, o código final e o desafio.
+5. **Materiais de apoio:** as três regras, o modelo de prompt, os oito padrões, como pedir ajuda com um erro, recursos do Claude Code, os prompts do vídeo, o `CLAUDE.md` de tutor e o desafio.
 6. **Referências.**
 
 ### Objetivos de aprendizagem
 
 | | Ao final, o participante será capaz de… | Questões |
 | --- | --- | --- |
-| O1 | Descrever um problema ao assistente, pedindo explicação em vez de resposta pronta | 1, 2, 3 |
-| O2 | Construir a solução por etapas com a ajuda do assistente | 4, 5 |
-| O3 | Explicar com as próprias palavras o que o código faz | 6, 7 |
-| O4 | Modificar o código e verificar o resultado com casos de teste | 8, 9, 10 |
+| O1 | Escrever prompts que pedem explicação, e não resposta pronta | 1, 2, 3 |
+| O2 | Conduzir a conversa com o assistente por etapas | 4, 5 |
+| O3 | Usar o assistente para entender e explicar o código | 6, 7 |
+| O4 | Conferir o que a IA entrega, com testes e casos de limite | 8, 9, 10 |
 
 ## Rodar no computador
 
@@ -84,6 +84,18 @@ Todo o conteúdo fica em `src/data/`. Não é preciso mexer nos componentes.
 | Materiais e referências | `src/data/materiais.ts` | — |
 
 Para converter tempo em segundos: `minutos × 60 + segundos` (ex.: 12:30 → 750).
+
+No YouTube, deixe o vídeo **público ou não listado**, com **"Permitir incorporação"** ativado e as legendas revisadas enviadas como CC.
+
+## Checklist antes da entrega (05/10/2026)
+
+- [ ] `VIDEO_ID`, duração, capítulos e tempos das questões preenchidos
+- [ ] Transcrição colada em `src/data/transcricao.ts`
+- [ ] Site aberto pelo link da Vercel no computador, no celular e em aba anônima
+- [ ] Vídeo toca no site, com legendas
+- [ ] Avaliação respondida do início ao fim, e os botões "Reveja no vídeo" funcionando
+- [ ] Todos os links das referências abrem
+- [ ] Link da Vercel enviado na planilha da disciplina
 
 ## Estrutura do projeto
 

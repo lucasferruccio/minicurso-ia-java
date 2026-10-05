@@ -1029,3 +1029,19 @@ pre {
 .rodape p {
   margin: 0;
 }
+
+.tabela-rolagem {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.tabela td.tabela__texto {
+  white-space: normal;
+  font-weight: 400;
+  color: var(--texto);
+}
+
+.grade-2 + .subtitulo,
+.tabela-rolagem + .grade-2 {
+  margin-top: 1.5rem;
+}
