@@ -1,6 +1,6 @@
 import { curso } from '../data/curso'
 
-const passos = ['Objetivos', 'Videoaula', 'Avaliação', 'Materiais']
+const passos = ['Objetivos', 'Videoaula', 'eBook', 'Infográfico', 'Avaliação', 'Materiais']
 
 export default function Hero() {
   return (

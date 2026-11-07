@@ -131,6 +131,26 @@ export const referencias: { grupo: string; itens: Referencia[] }[] = [
     ],
   },
   {
+    grupo: 'Pesquisas citadas no infográfico',
+    itens: [
+      {
+        texto:
+          'ANTHROPIC. How AI assistance impacts the formation of coding skills. 29 jan. 2026. Acesso em: 7 nov. 2026.',
+        url: 'https://www.anthropic.com/research/AI-assistance-coding-skills',
+      },
+      {
+        texto:
+          'BASTANI, Hamsa et al. Generative AI without guardrails can harm learning: Evidence from high school mathematics. Proceedings of the National Academy of Sciences, v. 122, n. 26, e2422633122, 2025.',
+        url: 'https://doi.org/10.1073/pnas.2422633122',
+      },
+      {
+        texto:
+          'KAZEMITABAAR, Majeed et al. How Novices Use LLM-Based Code Generators to Solve CS1 Coding Tasks in a Self-Paced Learning Environment. In: Koli Calling International Conference on Computing Education Research (Koli Calling ’23). ACM, 2023.',
+        url: 'https://doi.org/10.1145/3631802.3631806',
+      },
+    ],
+  },
+  {
     grupo: 'Ferramentas',
     itens: [
       {

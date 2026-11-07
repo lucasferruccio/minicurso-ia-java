@@ -98,7 +98,7 @@ export default function Quiz({ irParaMomento }: Props) {
   return (
     <Secao
       id="avaliacao"
-      numero={4}
+      numero={6}
       titulo="Avaliação interativa"
       lead={`${total} questões ligadas aos objetivos. Cada resposta mostra na hora por que está certa ou errada e indica a parte do vídeo para rever.`}
       fundo="papel"

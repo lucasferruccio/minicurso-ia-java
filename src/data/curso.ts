@@ -5,10 +5,10 @@ export const curso = {
   subtitulo:
     'Como escrever prompts e usar o Claude Code como tutor: pedir bem, avançar por etapas e conferir o que a IA entrega.',
   autor: 'Lucas Paiva',
-  disciplina: 'Educação a Distância · Projeto da 1ª VA',
+  disciplina: 'Educação a Distância · Projetos da 1ª e da 2ª VA',
   trilha: 'Docência Digital na Era da IA: Ensino e Aprendizagem na EaD',
   ano: 2026,
-  tempoEstimado: 'cerca de 1h30',
+  tempoEstimado: 'cerca de 2h',
 }
 
 /**
@@ -20,6 +20,20 @@ export const VIDEO_ID = 'Lz87pGk1OE4'
 
 /** Duração real do vídeo, para exibir no site (ex.: '25 min'). */
 export const DURACAO_VIDEO = '25 min'
+
+/**
+ * eBook (2ª VA). Cole aqui o link público do FlipHTML5 ou do Genially.
+ * - EBOOK_URL: link para abrir o eBook (botão "Abrir o eBook").
+ * - EBOOK_EMBED_URL: link de incorporação (opcional). Se preenchido, o eBook
+ *   aparece dentro do site. No Genially: Compartilhar → Incorporar → copie o
+ *   endereço do src do iframe. No FlipHTML5: Share → Embed → endereço do src.
+ * Enquanto os dois estiverem vazios, o site mostra o aviso "eBook em publicação".
+ */
+export const EBOOK_URL = ''
+export const EBOOK_EMBED_URL = ''
+
+/** Capítulos do eBook, para o resumo abaixo dele. Deixe vazio para esconder. */
+export const capitulosEbook: string[] = []
 
 export interface Capitulo {
   /** Momento do vídeo em segundos. */
@@ -66,7 +80,8 @@ export const conhecimentosPrevios = [
 export const etapasEstudo = [
   { titulo: 'Leia os objetivos', texto: 'Saiba o que você vai conseguir fazer ao final.' },
   { titulo: 'Assista à videoaula', texto: 'Pause nas pausas ativas e tente responder antes de continuar.' },
-  { titulo: 'Pratique', texto: 'Refaça as modificações no IntelliJ e tente o desafio final.' },
+  { titulo: 'Leia o eBook', texto: 'Aprofunde os temas do vídeo no seu ritmo e pratique no IntelliJ.' },
+  { titulo: 'Explore o infográfico', texto: 'Veja o que as pesquisas dizem sobre aprender a programar com IA.' },
   { titulo: 'Faça a avaliação', texto: 'Cada resposta traz uma explicação e indica a parte do vídeo para rever.' },
   { titulo: 'Consulte os materiais', texto: 'Código de apoio, prompts usados e referências.' },
 ]

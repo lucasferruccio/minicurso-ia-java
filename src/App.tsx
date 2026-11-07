@@ -4,6 +4,8 @@ import Hero from './components/Hero'
 import ComoEstudar from './components/ComoEstudar'
 import Sobre from './components/Sobre'
 import Videoaula from './components/Videoaula'
+import Ebook from './components/Ebook'
+import Infografico from './components/Infografico'
 import Quiz from './components/Quiz'
 import Materiais from './components/Materiais'
 import Referencias from './components/Referencias'
@@ -39,6 +41,8 @@ export default function App() {
         <ComoEstudar />
         <Sobre />
         <Videoaula pedido={pedido} />
+        <Ebook />
+        <Infografico />
         <Quiz irParaMomento={irParaMomento} />
         <Materiais />
         <Referencias />

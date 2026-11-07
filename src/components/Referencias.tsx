@@ -3,7 +3,7 @@ import { referencias } from '../data/materiais'
 
 export default function Referencias() {
   return (
-    <Secao id="referencias" numero={6} titulo="Referências" fundo="papel">
+    <Secao id="referencias" numero={8} titulo="Referências" fundo="papel">
       {referencias.map((g) => (
         <div key={g.grupo} className="referencias__grupo">
           <h3>{g.grupo}</h3>

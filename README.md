@@ -3,7 +3,7 @@
 Site do minicurso EaD em que o participante aprende a **escrever prompts e usar o Claude Code como tutor**: pedir bem, avançar por etapas, entender o código e conferir o que a IA entrega. O foco é o uso do assistente; o Java serve só de exemplo.
 
 - **Autor:** Lucas Paiva
-- **Disciplina:** Educação a Distância · Projeto da 1ª VA
+- **Disciplina:** Educação a Distância · Projetos da 1ª e da 2ª VA
 - **Trilha:** Docência Digital na Era da IA: Ensino e Aprendizagem na EaD
 - **Modelo de design instrucional:** ADDIE
 - **Tecnologias:** React 19 + TypeScript + Vite, publicado na Vercel
@@ -12,12 +12,14 @@ Site do minicurso EaD em que o participante aprende a **escrever prompts e usar 
 
 Uma página única, na ordem de estudo:
 
-1. **Como estudar:** sequência sugerida, tempo estimado (cerca de 1h30), requisitos e onde tirar dúvidas.
+1. **Como estudar:** sequência sugerida, tempo estimado (cerca de 2h), requisitos e onde tirar dúvidas.
 2. **Público e objetivos:** público-alvo, conhecimentos prévios e os 4 objetivos de aprendizagem.
 3. **Videoaula:** vídeo do YouTube incorporado e a lista das partes do vídeo.
-4. **Avaliação interativa:** 10 questões com feedback imediato e explicativo, indicação da parte do vídeo para rever e resultado por objetivo.
-5. **Materiais de apoio:** as três regras, o modelo de prompt, os oito padrões, como pedir ajuda com um erro, recursos do Claude Code, os prompts do vídeo, o `CLAUDE.md` de tutor e o desafio.
-6. **Referências.**
+4. **eBook (2ª VA):** eBook interativo publicado no FlipHTML5 ou no Genially, incorporado ou por link.
+5. **Infográfico (2ª VA):** "O que as pesquisas dizem", infográfico interativo em rolagem com quatro estudos sobre aprender a programar com IA, pontos clicáveis e links para as fontes.
+6. **Avaliação interativa:** 10 questões com feedback imediato e explicativo, indicação da parte do vídeo para rever e resultado por objetivo.
+7. **Materiais de apoio:** as três regras, o modelo de prompt, os oito padrões, como pedir ajuda com um erro, recursos do Claude Code, os prompts do vídeo, o `CLAUDE.md` de tutor e o desafio.
+8. **Referências.**
 
 ### Objetivos de aprendizagem
 
@@ -79,11 +81,22 @@ Todo o conteúdo fica em `src/data/`. Não é preciso mexer nos componentes.
 | ID do vídeo do YouTube | `src/data/curso.ts` | `VIDEO_ID` (atual: `Lz87pGk1OE4`) |
 | Partes do vídeo | `src/data/curso.ts` | `capitulos` |
 | Parte do vídeo de cada questão | `src/data/questoes.ts` | `trecho` |
+| Link do eBook | `src/data/curso.ts` | `EBOOK_URL` e `EBOOK_EMBED_URL` |
+| Capítulos do eBook (resumo) | `src/data/curso.ts` | `capitulosEbook` |
+| Textos e números do infográfico | `src/data/pesquisas.ts` | — |
 | Materiais e referências | `src/data/materiais.ts` | — |
 
 No YouTube, deixe o vídeo **público ou não listado**, com **"Permitir incorporação"** ativado e as legendas revisadas enviadas como CC.
 
-## Checklist antes da entrega (05/10/2026)
+## Checklist da 2ª VA (09/11/2026)
+
+- [ ] `EBOOK_URL` (e, se quiser, `EBOOK_EMBED_URL`) preenchido em `src/data/curso.ts`
+- [ ] eBook abre pelo site, no computador e no celular
+- [ ] Infográfico: rolar até o fim, clicar em todos os botões e pontos +
+- [ ] Links das fontes do infográfico abrem
+- [ ] Vídeo e avaliação da 1ª VA continuam funcionando
+
+## Checklist da 1ª VA (05/10/2026)
 
 - [x] `VIDEO_ID` preenchido
 - [ ] Site aberto pelo link da Vercel no computador, no celular e em aba anônima
@@ -102,9 +115,10 @@ minicurso-ia-java/
     ├── App.tsx            monta a página e controla o "pular para o minuto" do vídeo
     ├── main.tsx           ponto de entrada do React
     ├── styles.css         visual "Caderno": cores, tipografia e layout responsivo
-    ├── components/        Header, Hero, ComoEstudar, Sobre, Videoaula, Quiz,
-    │                      Materiais, Referencias, Footer, Secao, CodeBlock
-    └── data/              curso.ts, questoes.ts, materiais.ts, transcricao.ts
+    ├── components/        Header, Hero, ComoEstudar, Sobre, Videoaula, Ebook,
+    │                      Infografico (+ infografico.css), Quiz, Materiais,
+    │                      Referencias, Footer, Secao, CodeBlock
+    └── data/              curso.ts, pesquisas.ts, questoes.ts, materiais.ts, transcricao.ts
 ```
 
 ## Acessibilidade

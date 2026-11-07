@@ -2,6 +2,8 @@ const links = [
   { href: '#como-estudar', rotulo: 'Como estudar' },
   { href: '#sobre', rotulo: 'Objetivos' },
   { href: '#videoaula', rotulo: 'Videoaula' },
+  { href: '#ebook', rotulo: 'eBook' },
+  { href: '#pesquisas', rotulo: 'Infográfico' },
   { href: '#avaliacao', rotulo: 'Avaliação' },
   { href: '#materiais', rotulo: 'Materiais' },
   { href: '#referencias', rotulo: 'Referências' },

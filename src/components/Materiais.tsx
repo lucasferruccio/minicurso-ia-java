@@ -6,7 +6,7 @@ export default function Materiais() {
   return (
     <Secao
       id="materiais"
-      numero={5}
+      numero={7}
       titulo="Materiais de apoio"
       lead="Tudo o que aparece no vídeo, para você consultar e praticar."
     >
