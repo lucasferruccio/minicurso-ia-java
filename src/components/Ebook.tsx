@@ -15,6 +15,7 @@ export default function Ebook() {
           <iframe
             src={EBOOK_EMBED_URL}
             title={`eBook: ${curso.titulo}`}
+            allow="fullscreen"
             allowFullScreen
             loading="lazy"
             referrerPolicy="strict-origin-when-cross-origin"

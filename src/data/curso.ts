@@ -29,11 +29,18 @@ export const DURACAO_VIDEO = '25 min'
  *   endereço do src do iframe. No FlipHTML5: Share → Embed → endereço do src.
  * Enquanto os dois estiverem vazios, o site mostra o aviso "eBook em publicação".
  */
-export const EBOOK_URL = ''
-export const EBOOK_EMBED_URL = ''
+export const EBOOK_URL = 'https://online.fliphtml5.com/lucasferruccio/Aprender-Java-com-o-Claude-Code-eBook/'
+export const EBOOK_EMBED_URL = 'https://online.fliphtml5.com/lucasferruccio/Aprender-Java-com-o-Claude-Code-eBook/'
 
 /** Capítulos do eBook, para o resumo abaixo dele. Deixe vazio para esconder. */
-export const capitulosEbook: string[] = []
+export const capitulosEbook: string[] = [
+  'Como o assistente funciona, e como configurá-lo para estudar',
+  'Anatomia de um bom prompt',
+  'Oito padrões de prompt',
+  'Do começo ao fim, na prática',
+  'Erros e armadilhas',
+  'Mão na massa: desafio final, teste rápido e gabarito comentado',
+]
 
 export interface Capitulo {
   /** Momento do vídeo em segundos. */

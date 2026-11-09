@@ -33,7 +33,8 @@ export default function Quiz({ irParaMomento }: Props) {
   const feedbackRef = useRef<HTMLDivElement>(null)
   const enunciadoRef = useRef<HTMLHeadingElement>(null)
   const resultadoRef = useRef<HTMLHeadingElement>(null)
-  const primeiraRenderizacao = useRef(true)
+  /** Última questão/estado já mostrados: só move o foco quando eles mudam de verdade. */
+  const anterior = useRef({ indice: 0, concluido: false })
 
   const q = questoes[indice]
   const total = questoes.length
@@ -43,10 +44,8 @@ export default function Quiz({ irParaMomento }: Props) {
   }, [verificado])
 
   useEffect(() => {
-    if (primeiraRenderizacao.current) {
-      primeiraRenderizacao.current = false
-      return
-    }
+    if (anterior.current.indice === indice && anterior.current.concluido === concluido) return
+    anterior.current = { indice, concluido }
     if (concluido) resultadoRef.current?.focus()
     else enunciadoRef.current?.focus()
   }, [indice, concluido])

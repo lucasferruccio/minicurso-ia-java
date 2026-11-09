@@ -611,7 +611,7 @@ pre {
 
 .ebook {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   max-height: 80vh;
   width: 100%;
   background: var(--superficie);
@@ -627,6 +627,12 @@ pre {
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+@media (max-width: 640px) {
+  .ebook {
+    aspect-ratio: 3 / 4;
+  }
 }
 
 .ebook__aviso {
